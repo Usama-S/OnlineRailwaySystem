@@ -1,0 +1,116 @@
+﻿@model OnlineRailway.TrainName
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.trainName1)*@
+            Train Name
+        </dt>
+
+        <dd>
+            @{
+                string trainName = Model.trainName1.ToUpper();
+            }
+            @trainName
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Departure Days
+        </dt>
+
+        <dd>
+            @{
+                string days = "";
+                if (Model.TrainDays.Any(i => i.Monday == true)) { days += "Mon "; }
+                if (Model.TrainDays.Any(i => i.Tuesday == true)) { days += "Tue "; }
+                if (Model.TrainDays.Any(i => i.Wednesday == true)) { days += "Wed "; }
+                if (Model.TrainDays.Any(i => i.Thursday == true)) { days += "Thu "; }
+                if (Model.TrainDays.Any(i => i.Friday == true)) { days += "Fri "; }
+                if (Model.TrainDays.Any(i => i.Saturday == true)) { days += "Sat "; }
+                if (Model.TrainDays.Any(i => i.Sunday == true)) { days += "Sun "; }
+            }
+            @days
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.trainName1)*@
+            Train Route
+        </dt>
+
+        <dd>
+            @{
+                var routeName = Model.TrainRoutes.First(r => r.name != null);
+            }
+            @routeName.name.ToUpper();
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Timings
+        </dt>
+
+        <dd>
+            @{
+                var train = Model.TrainTimeTables.First(t => t.upDepartureTime != null);
+                var upDepTime = train.upDepartureTime;
+                var upArrTime = train.upArrivalTime;
+                var downDepTime = train.downDepartureTime;
+                var downArrTime = train.downArrivalTime;
+            }
+            <table class="table">
+                <tr style="text-align: center">
+                    <th colspan="2">Up</th>
+                    <th colspan="2">Down</th>
+                </tr>
+                <tr>
+                    <td>Departure</td>
+                    <td>Arrival</td>
+                    <td>Departure</td>
+                    <td>Arrival</td>
+                </tr>
+                <tr>
+                    <td>@upDepTime</td>
+                    <td>@upArrTime</td>
+                    <td>@downDepTime</td>
+                    <td>@downArrTime</td>
+                </tr>
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<script src="/Backend/vendor/jquery/jquery.min.js"></script>
+<script src="/Backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/Backend/js/sb-admin-2.min.js"></script>

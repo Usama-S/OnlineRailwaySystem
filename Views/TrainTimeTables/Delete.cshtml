@@ -1,0 +1,73 @@
+﻿@model OnlineRailway.TrainTimeTable
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TrainTimeTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.upDepartureTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.upDepartureTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.upArrivalTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.upArrivalTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.downDepartureTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.downDepartureTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.downArrivalTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.downArrivalTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainDay.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainDay.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainName.trainName1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainName.trainName1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

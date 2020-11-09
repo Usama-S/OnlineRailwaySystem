@@ -1,0 +1,101 @@
+﻿@model IEnumerable<OnlineRailway.Train>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div style="overflow:auto">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.trainNo)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.upOrDownStatus)*@
+                Up/Down
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.noOfAcCabins)*@
+                AC Cabins
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.noOfSleeperCabins)*@
+                Sleeper Cabins
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.noOfEconomyCabins)*@
+                Economy Cabins
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainName.trainName1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainRoute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainStatu.status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.trainNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.upOrDownStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.noOfAcCabins)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.noOfSleeperCabins)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.noOfEconomyCabins)
+                </td>
+                <td>
+                    @*(@Html.DisplayFor(modelItem => item.departureDate))*@
+                    @{ 
+                        var date = ((DateTime)item.departureDate).ToShortDateString();
+                    }
+                    @date
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainName.trainName1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainRoute.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainStatu.status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<script src="/Backend/vendor/jquery/jquery.min.js"></script>
+<script src="/Backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/Backend/js/sb-admin-2.min.js"></script>

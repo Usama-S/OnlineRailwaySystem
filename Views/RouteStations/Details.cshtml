@@ -1,0 +1,67 @@
+﻿@model OnlineRailway.RouteStation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RouteStation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.stationArrivalTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stationArrivalTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stationDepartureTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stationDepartureTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastStationDistance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastStationDistance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nextStationDistance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nextStationDistance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainRoute.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainRoute.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Station.stationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station.stationName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

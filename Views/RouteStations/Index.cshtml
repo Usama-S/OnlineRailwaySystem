@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OnlineRailway.RouteStation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.stationArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stationDepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastStationDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nextStationDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainRoute.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Station.stationName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.stationArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stationDepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastStationDistance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nextStationDistance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainRoute.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Station.stationName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

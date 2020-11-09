@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "findUser";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/Users/Details" method="get">
+        <div class="input-group">
+            <input type="number" required="required" autocomplete="off" name="id" class="form-control bg-light border-0 small" placeholder="Enter UserID" aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    @if (ViewBag.nouser != null)
+    {
+        <div style="color: red; text-decoration: double; text-align: center; margin-top: 10px">
+            <b>@ViewBag.nouser</b>
+        </div>
+    }
+</div>
+
+<script src="/Backend/vendor/jquery/jquery.min.js"></script>
+<script src="/Backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/Backend/js/sb-admin-2.min.js"></script>

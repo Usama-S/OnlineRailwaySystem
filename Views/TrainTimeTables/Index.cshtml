@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OnlineRailway.TrainTimeTable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.upDepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.upArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.downDepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.downArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainDay.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainName.trainName1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.upDepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.upArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.downDepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.downArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainDay.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainName.trainName1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

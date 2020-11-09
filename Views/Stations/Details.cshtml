@@ -1,0 +1,56 @@
+﻿@model OnlineRailway.Station
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Station</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.stationCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stationCode)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.stationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stationName)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.railwayDivisionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.railwayDivisionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.stationCode }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.stationCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+<script src="/Backend/vendor/jquery/jquery.min.js"></script>
+<script src="/Backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/Backend/js/sb-admin-2.min.js"></script>

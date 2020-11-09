@@ -1,0 +1,291 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@{
+    List<Station> stations = ViewBag.stations;
+    List<TrainName> trains = ViewBag.trains;
+}
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Reservation Form</title>
+    <!-- Meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Airline Booking Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta tags -->
+    <!-- Stylesheet -->
+    <link href="/ReservationForm/css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
+    <link rel="stylesheet" href="/ReservationForm/css/jquery-ui.css" />
+    <link href="/ReservationForm/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- //Stylesheet -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+    <!--//fonts-->
+
+</head>
+
+<body>
+    <!--background-->
+    <h1>Reservation Form </h1>
+    <div class="booking-form-w3layouts">
+        <!-- Form starts here -->
+        <form onsubmit="confirmSub(this)" action="/Reservation/Proceed" method="get">
+            <h2 class="sub-heading-agileits">Booking Details</h2>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <select name="from" onchange="search()" id="from" class="form-control" required>
+                        <option value="-1">From</option>
+                        @foreach (var item in stations)
+                        {
+                            <option value="@item.stationCode">@item.stationName.ToUpper()</option>
+                        }
+                    </select>
+                </div>
+                <div class="field-agileinfo-spc form-w3-agile-text2">
+                    <select name="to" onchange="search()" id="to" class="form-control" required>
+                        <option value="-1">To</option>
+                        @foreach (var item in stations)
+                        {
+                            <option value="@item.stationCode">@item.stationName.ToUpper()</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <input id="datepicker" autocomplete="off" onchange="searchWithDate()" type="text" placeholder="Departure Date" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
+                           required="">
+                </div>
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <select name="trainID" onchange="getTime()" id="trainDDL" class="form-control" required>
+                        <option value="-1">Preferred Train</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text2">
+                    <input type="text" id="depTime" name="Time" class="timepicker form-control" placeholder="Departure Time" disabled value="">
+                </div>
+                <div class="field-agileinfo-spc form-w3-agile-text2">
+                    <input type="text" id="arrTime" name="Time" class="timepicker form-control" placeholder="Arrival Time" disabled value="">
+                </div>
+            </div>
+
+            <div class="radio-section">
+                <h6>Select your Fare</h6>
+                <div class="clear"></div>
+            </div>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <input id="seats" autocomplete="off" name="seats" type="text" placeholder="Seats" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '1';}"
+                           required="">
+                </div>
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <select name="trainClass" id="trainClass" onchange="getFare()" class="form-control" required>
+                        <option>Class</option>
+                        <option value="economy">Economy</option>
+                        <option value="ac">AC</option>
+                        <option value="sleeper">AC Sleeper</option>
+                    </select>
+                </div>
+            </div>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <input id="fare1" type="text" placeholder="Fare" value="" disabled="disabled" required="">
+                    <input style="display: none" id="fare2" name="fare" type="number" value="">
+                </div>
+            </div>
+            <h3 class="sub-heading-agileits" style="margin-top: 20px;">Personal Details</h3>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <input type="text" autocomplete="off" name="name" placeholder="Full Name" required="">
+                </div>
+                <div class="field-agileinfo-spc form-w3-agile-text2">
+                    <input type="text" autocomplete="off" name="phoneNumber" placeholder="Phone Number" required="">
+                </div>
+            </div>
+            <div class="main-flex-w3ls-sectns">
+                <div class="field-agileinfo-spc form-w3-agile-text1">
+                    <input type="email" autocomplete="off" name="email" placeholder="Email" required="">
+                </div>
+                <div class="field-agileinfo-spc form-w3-agile-text2">
+                    <input type="text" autocomplete="off" name="cnic" placeholder="CNIC Number" required="">
+                </div>
+            </div>
+            <div class="clear"></div>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear Form">
+            <div class="clear"></div>
+        </form>
+        <!--// Form starts here -->
+    </div>
+    <!--copyright-->
+    <div class="copyright">
+        <p>&copy; 2018. Airline Booking Form . All Rights Reserved</p>
+    </div>
+    <!--//copyright-->
+    <script type="text/javascript" src="/ReservationForm/js/jquery-2.2.3.min.js"></script>
+    <!-- Time Js -->
+    <script type="text/javascript" src="/ReservationForm/js/wickedpicker.js"></script>
+    <script type="text/javascript">
+        $('.timepicker,.timepicker1').wickedpicker({
+            twentyFour: false
+        });
+    </script>
+    <!--// Time Js -->
+    <!-- Calendar Js -->
+    <script src="/ReservationForm/js/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
+        });
+    </script>
+    <!-- //Calendar Js -->
+
+</body>
+
+</html>
+
+
+
+<script>
+
+    function search() {
+        var from = document.getElementById('from').value;
+        var to = document.getElementById('to').value;
+        var ddl = document.getElementById('trainDDL');
+
+        var url = "/api/searchTrain/" + from + "/" + to;
+
+        var xhr = new XMLHttpRequest;
+        xhr.open("get", url);
+        xhr.onload = function () {
+            var trains = JSON.parse(xhr.response);
+            ddl.innerHTML = "";
+            ddl.innerHTML += "<option value='-1'>Preferred Train</option>";
+            for (var i = 0; i < trains.length; i++) {
+                ddl.innerHTML += "<option value=" + trains[i].id + ">" + trains[i].TrainName.trainName1.toUpperCase() + "</option>";
+            }
+        }
+        xhr.send();
+    }
+
+</script>
+
+<script>
+    function searchWithDate() {
+        var from2 = document.getElementById('from').value;
+        var to2 = document.getElementById('to').value;
+        var ddl2 = document.getElementById('trainDDL');
+        var jsDate = $('#datepicker').datepicker('getDate');
+        var date = new Date(jsDate.getFullYear(), jsDate.getMonth(), jsDate.getDate());
+
+        var url2 = "/api/searchTrainWithDate/" + from2 + "/" + to2 + "/" + jsDate.getFullYear() + "/" + (jsDate.getMonth() + 1) + "/" + jsDate.getDate();
+        console.log(date);
+        console.log(url2);
+        var xhr2 = new XMLHttpRequest;
+        xhr2.open("get", url2);
+        xhr2.onload = function () {
+            var trains = JSON.parse(xhr2.response);
+            ddl2.innerHTML = "";
+            ddl2.innerHTML += "<option value='-1'>Preferred Train</option>";
+            for (var i = 0; i < trains.length; i++) {
+                ddl2.innerHTML += "<option value=" + trains[i].id + ">" + trains[i].TrainName.trainName1.toUpperCase() + "</option>";
+                console.log(trains);
+            }
+        }
+        xhr2.send();
+    }
+</script>
+
+<script>
+    function getFare() {
+        var from3 = document.getElementById('from').value;
+        var to3 = document.getElementById('to').value;
+        var trainClass3 = document.getElementById('trainClass').value;
+        var seats3 = document.getElementById('seats').value;
+        var ddl3 = document.getElementById('trainDDL');
+        var fareElementA = document.getElementById("fare1");
+        var fareElementB = document.getElementById("fare2");
+
+        var url3 = "/api/getFare/" + from3 + "/" + to3 + "/" + ddl3.value + "/" + trainClass3 + "/" + seats3;
+
+        console.log(url3);
+
+        var xhr3 = new XMLHttpRequest;
+        xhr3.open("get", url3);
+        xhr3.onload = function () {
+            var fare = xhr3.response;
+            if (fare != -1) {
+                fareElementA.value = "$" + fare;
+                fareElementA.style.color = "white";
+                fareElementB.value = fare;
+            }
+            else {
+                fareElementA.value = "Sorry! No Seats Available in this Class";
+                fareElementA.style.color = "red";
+            }
+        }
+        xhr3.send();
+    }
+
+</script>
+
+<script>
+    function getTime() {
+        var from4 = document.getElementById('from').value;
+        var to4 = document.getElementById('to').value;
+        var ddl4 = document.getElementById('trainDDL').value;
+        var arr = document.getElementById('depTime');
+        var dep = document.getElementById('arrTime');
+
+        var url4 = "/api/getTime/" + from4 + "/" + to4 + "/" + ddl4;
+
+        var xhr4 = new XMLHttpRequest;
+        xhr4.open("get", url4);
+        xhr4.onload = function () {
+            var time = JSON.parse(xhr4.response);
+            arr.value = time[0];
+            dep.value = time[1];
+        }
+        xhr4.send();
+    }
+
+</script>
+
+<script>
+    function confirmSub(elmnt) {
+        var status = confirm("Are you sure you want to continue?");
+        if (status) {
+            elmnt.submit();
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+

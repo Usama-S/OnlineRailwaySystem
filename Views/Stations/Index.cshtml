@@ -1,0 +1,55 @@
+﻿@model IEnumerable<OnlineRailway.Station>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.stationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.railwayDivisionName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.stationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.railwayDivisionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.stationCode }) |
+            @Html.ActionLink("Details", "Details", new { id = item.stationCode }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.stationCode })
+        </td>
+    </tr>
+    }
+
+</table>
+
+
+<script src="/Backend/vendor/jquery/jquery.min.js"></script>
+<script src="/Backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/Backend/js/sb-admin-2.min.js"></script>

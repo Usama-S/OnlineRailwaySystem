@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link rel="stylesheet" type="text/css" href="/Frontend/styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="/Frontend/styles/contact_responsive.css">
+
+<!-- Home -->
+
+<div class="home">
+    <!-- Image by https://unsplash.com/peecho -->
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="/Frontend/images/news.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content">
+                    <div class="home_content_inner">
+                        <div class="home_title">Request An Account</div>
+                        @*<div class="home_breadcrumbs">
+                            <ul class="home_breadcrumbs_list">
+                                <li class="home_breadcrumb"><a href="index.html">Home</a></li>
+                                <li class="home_breadcrumb">Contact</li>
+                            </ul>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Find Form -->
+
+@*<div class="find">
+    <!-- Image by https://unsplash.com/garciasaldana_ -->
+    <div class="find_background_container prlx_parent">
+        <div class="find_background prlx" style="background-image:url(/Frontend/images/find.jpg)"></div>
+    </div>
+    <!-- <div class="find_background parallax-window" data-parallax="scroll" data-image-src="/Frontend/images/find.jpg" data-speed="0.8"></div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="find_title text-center">Find the Adventure of a lifetime</div>
+            </div>
+            <div class="col-12">
+                <div class="find_form_container">
+                    <form action="#" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+                        <div class="find_item">
+                            <div>Destination:</div>
+                            <input type="text" class="destination find_input" required="required" placeholder="Keyword here">
+                        </div>
+                        <div class="find_item">
+                            <div>Adventure type:</div>
+                            <select name="adventure" id="adventure" class="dropdown_item_select find_input">
+                                <option>Categories</option>
+                                <option>Categories</option>
+                                <option>Categories</option>
+                            </select>
+                        </div>
+                        <div class="find_item">
+                            <div>Min price</div>
+                            <select name="min_price" id="min_price" class="dropdown_item_select find_input">
+                                <option>&nbsp;</option>
+                                <option>Price</option>
+                                <option>Price</option>
+                            </select>
+                        </div>
+                        <div class="find_item">
+                            <div>Max price</div>
+                            <select name="max_price" id="max_price" class="dropdown_item_select find_input">
+                                <option>&nbsp;</option>
+                                <option>Price</option>
+                                <option>Price</option>
+                            </select>
+                        </div>
+                        <button class="button find_button">Find</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<!-- Contact -->
+
+<div class="contact">
+    <div class="container">
+        <div class="row" style="text-align: center">
+            <div class="col">
+                <div class="contact_title">Request an Account</div>
+                @*<div class="contact_subtitle">say hello</div>*@
+            </div>
+        </div>
+        <div class="row contact_content">
+            @*<div class="col-lg-5">
+                <div class="contact_text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla lectus nec diam auctor, ut fringilla diam sagittis. Quisque vel est id justo faucibus dapibus id a nibh. Aenean suscipit consequat lacus, sit amet mollis nulla. Morbi sagittis orci id lacus convallis tempus eget sit amet metus.</p>
+                </div>
+                <div class="contact_info">
+                    <div class="contact_info_box">i</div>
+                    <div class="contact_info_container">
+                        <div class="contact_info_content">
+                            <ul>
+                                <li>Address: 1481 Creekside Lane Avila Beach, CA 93424</li>
+                                <li>Phone: +53 345 7953 32453</li>
+                                <li>Email: miloThemes@gmail.com</li>
+                            </ul>
+                        </div>
+                        <div class="contact_info_social">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <div class="col-lg-7" style="margin: auto;">
+                <div class="contact_form_container">
+                    @if (ViewBag.requestSuccess != null)
+                    {
+                        <div class="alert alert-success">
+                            @ViewBag.requestSuccess
+                        </div>
+                    }
+                    <form action="/Accounts/requestAccount" method="post" id="contact_form" class="clearfix" style="text-align:center">
+                        <input id="contact_input_name" name="name" class="contact_input contact_input_name" type="text" placeholder="Name" required="required" autocomplete="off" data-error="Name is required.">
+                        <input id="contact_input_email" name="email" class="contact_input contact_input_email" type="text" placeholder="E-mail" required="required" autocomplete="off" data-error="E-mail is required.">
+                        <input id="contact_input_subject" name="cnic" class="contact_input contact_input_subject" type="text" placeholder="CNIC" required="required" autocomplete="off" data-error="CNIC is required">
+                        @*<textarea id="contact_input_message" class="contact_message_input contact_input_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>*@
+                        <button id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="Submit" style="float: none">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @*<div class="row contact_map">
+            <!-- Google Map -->
+
+            <div class="col">
+                <div id="google_map">
+                    <div class="map_container">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+    </div>
+</div>
+
+<script src="/Frontend/js/jquery-3.2.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="/Frontend/js/contact_custom.js"></script>
+<script src="/Frontend/plugins/greensock/TweenMax.min.js"></script>
+<script src="/Frontend/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/Frontend/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/Frontend/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/Frontend/plugins/greensock/ScrollToPlugin.min.js"></script>

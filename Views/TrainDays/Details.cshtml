@@ -1,0 +1,92 @@
+﻿@model OnlineRailway.TrainDay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainDay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Monday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tuesday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tuesday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wednesday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wednesday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thursday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thursday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Friday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Friday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saturday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saturday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sunday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sunday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainName.trainName1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainName.trainName1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+
+<script src="/Backend/vendor/jquery/jquery.min.js"></script>
+<script src="/Backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/Backend/js/sb-admin-2.min.js"></script>

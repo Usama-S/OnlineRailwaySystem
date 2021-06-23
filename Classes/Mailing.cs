@@ -20,8 +20,8 @@ namespace Mailings
 
             var host = "smtp.gmail.com";                    //should be kept in a .config file
             var port = 587;                                 //should be kept in a .config file
-            var username = "awami.usama@gmail.com";      //should be kept in a .config file
-            var password = "awami@147";                //should be kept in a .config file
+            var username = "youremail@gmail.com";      //should be kept in a .config file
+            var password = "your-email-password";                //should be kept in a .config file
 
             var client = new System.Net.Mail.SmtpClient(host, port);
             client.Credentials = new NetworkCredential(username, password);
